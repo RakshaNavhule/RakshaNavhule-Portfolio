@@ -1,8 +1,12 @@
 .vaultSection {
     padding: 8rem 2rem;
-    background-color: var(--bg-primary);
+    background-color: var(--bg-secondary);
     position: relative;
     z-index: 2;
+    background-size: 50px 50px;
+    background-image:
+        linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
 }
 
 .container {
@@ -35,109 +39,134 @@
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 2.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 4rem;
 }
 
-.card {
-    display: block;
+.videoCard {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.videoWrapper {
+    aspect-ratio: 16/9;
     background-color: var(--bg-card);
     border: 1px solid var(--border-color);
-    border-radius: 16px;
-    height: 400px;
-    position: relative;
+    border-radius: 20px;
     overflow: hidden;
-    transition: all var(--transition-smooth);
-}
-
-.cardContent {
-    padding: 2.5rem;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
     position: relative;
-    z-index: 2;
+    box-shadow: 0 10px 30px #fff;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.levelBadge {
-    font-family: var(--font-heading);
-    font-size: 0.8rem;
-    letter-spacing: 0.1em;
-    color: var(--bg-primary);
-    background-color: var(--text-primary);
-    padding: 0.3rem 0.8rem;
-    border-radius: 100px;
-    align-self: flex-start;
-    margin-bottom: auto;
-    font-weight: 700;
+.videoCard:hover .videoWrapper {
+    transform: translateY(-8px) scale(1.02);
 }
 
-.cardTitle {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-    color: var(--text-primary);
-    transition: color var(--transition-fast);
-}
-
-.cardCategory {
-    color: var(--accent-color);
-    font-weight: 600;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: 0;
-}
-
-/* Hover Overlay */
-.cardOverlay {
-    position: absolute;
-    top: 0;
-    left: 0;
+.mainVideo {
     width: 100%;
     height: 100%;
-    background: linear-gradient(to top, var(--bg-card) 20%, transparent 100%);
+    object-fit: cover;
+}
+
+.videoInfo {
+    text-align: left;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    padding: 2.5rem;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all var(--transition-smooth);
-    background-color: rgba(10, 10, 10, 0.9);
+    gap: 0.8rem;
 }
 
-.card:hover {
-    transform: translateY(-10px);
-    border-color: var(--accent-color);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 20px var(--accent-glow);
-}
-
-.card:hover .cardOverlay {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.cardDesc {
+.videoTitle {
+    font-size: 1.5rem;
     color: var(--text-primary);
-    font-size: 1rem;
+    line-height: 1.3;
+    font-family: var(--font-heading);
+}
+
+.videoDesc {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
     line-height: 1.6;
-    margin-bottom: 1.5rem;
 }
 
 .viewLink {
-    color: var(--accent-color);
+    font-size: 0.9rem;
     font-weight: 600;
+    color: var(--accent-color);
+    text-decoration: none;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
+    transition: color 0.3s ease;
+    margin-top: 0.5rem;
+}
+
+.viewLink:hover {
+    color: var(--text-primary);
+    text-decoration: underline;
+}
+
+.emptyState {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 4rem 0;
+    color: var(--text-secondary);
+    font-style: italic;
+    border: 1px dashed var(--border-color);
+    border-radius: 16px;
+}
+
+.introText {
+    color: var(--text-secondary);
+    font-size: 1.25rem;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.contentCreationHeader {
+    margin-top: 1.5rem;
 }
 
 @media (max-width: 768px) {
     .grid {
         grid-template-columns: 1fr;
+        gap: 3rem;
     }
 
-    .card {
-        height: 350px;
+    .videoWrapper {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .videoInfo {
+        text-align: center;
+        align-items: center;
+    }
+}
+
+@media (max-width: 992px) {
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+
+    .videoWrapper {
+        max-width: 100%;
+    }
+
+    .videoInfo {
+        text-align: center;
+        align-items: center;
+    }
+
+    .introText {
+        font-size: 1.1rem;
+        padding: 0 1rem;
+    }
+
+    .sectionTitle {
+        font-size: 2.5rem;
     }
 }

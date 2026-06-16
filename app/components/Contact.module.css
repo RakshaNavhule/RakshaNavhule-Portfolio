@@ -1,24 +1,16 @@
 .contactSection {
-    padding: 10rem 2rem 2rem;
-    background-color: var(--bg-primary);
+    padding: 10rem 2rem 6rem;
+    background-color: var(--text-primary);
+    /* Dark aesthetic charcoal */
     position: relative;
     overflow: hidden;
     text-align: center;
-}
-
-.glowOrb {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 60vw;
-    height: 60vw;
-    background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
-    border-radius: 50%;
-    filter: blur(100px);
-    z-index: 0;
-    opacity: 0.3;
-    pointer-events: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    --grid-color: rgba(255, 255, 255, 0.03);
+    background-size: 50px 50px;
+    background-image:
+        linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
 }
 
 .container {
@@ -28,105 +20,145 @@
     z-index: 2;
 }
 
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Pre-title "Reach out anytime" row */
+.preTitleContainer {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    width: 100%;
+    max-width: 400px;
+    opacity: 0.6;
+}
+
+.line {
+    flex-grow: 1;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.preTitleText {
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--bg-primary);
+}
+
+/* Main typography styling */
 .title {
     font-size: clamp(3rem, 6vw, 4.5rem);
     line-height: 1.1;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+    color: var(--bg-primary);
 }
 
 .accent {
-    color: var(--accent-color);
-    font-family: var(--font-primary);
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: -0.02em;
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.6);
 }
 
 .subtitle {
     font-size: 1.2rem;
-    color: var(--text-secondary);
+    color: rgba(255, 255, 255, 0.7);
     margin-bottom: 4rem;
+    max-width: 500px;
+    line-height: 1.6;
 }
 
-.linksGrid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-    margin-bottom: 8rem;
-}
-
-.contactCard {
-    background-color: rgba(18, 18, 18, 0.6);
-    backdrop-filter: blur(10px);
-    border: 1px solid var(--border-color);
-    border-radius: 20px;
-    padding: 3rem 2rem;
-    transition: all var(--transition-smooth);
+/* Call to Action Buttons Row */
+.actionGrid {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    overflow: hidden;
+    gap: 1.5rem;
+    margin-bottom: 8rem;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-.contactCard::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
-    transform: translateX(-100%);
-    transition: transform 0.6s ease;
-}
-
-.contactCard:hover {
-    transform: translateY(-10px);
-    border-color: rgba(99, 102, 241, 0.5);
-    background-color: var(--bg-card);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-}
-
-.contactCard:hover::before {
-    transform: translateX(100%);
-}
-
-.cardIcon {
-    font-family: var(--font-heading);
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: var(--text-secondary);
-    margin-bottom: 1rem;
-    transition: color var(--transition-fast);
-}
-
-.contactCard:hover .cardIcon {
-    color: var(--accent-color);
-}
-
-.cardTitle {
-    font-size: 1.5rem;
+.primaryButton {
+    background-color: var(--bg-primary);
     color: var(--text-primary);
-    margin-bottom: 0.5rem;
+    padding: 1rem 2.5rem;
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all var(--transition-fast);
+    text-decoration: none;
 }
 
-.cardDesc {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
+.primaryButton:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    filter: brightness(0.9);
 }
 
+.secondaryButton {
+    background-color: transparent;
+    color: var(--bg-primary);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 1rem 2.5rem;
+    border-radius: 100px;
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: all var(--transition-fast);
+    text-decoration: none;
+}
+
+.secondaryButton:hover {
+    border-color: var(--bg-primary);
+    background-color: rgba(255, 255, 255, 0.05);
+    transform: translateY(-3px);
+}
+
+/* Footer / Social Links */
 .footer {
     position: relative;
     z-index: 2;
-    border-top: 1px solid var(--border-color);
-    padding-top: 2rem;
-    color: var(--text-secondary);
-    font-size: 0.9rem;
+    padding-top: 3rem;
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.socialRow {
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    flex-wrap: wrap;
+}
+
+.socialLink {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: all var(--transition-fast);
+}
+
+.socialLink:hover {
+    color: var(--bg-primary);
 }
 
 @media (max-width: 600px) {
-    .linksGrid {
-        grid-template-columns: 1fr;
+    .actionGrid {
+        flex-direction: column;
+        width: 100%;
+        gap: 1rem;
+    }
+
+    .primaryButton,
+    .secondaryButton {
+        width: 100%;
+    }
+
+    .socialRow {
+        gap: 2rem;
+        flex-direction: column;
     }
 }

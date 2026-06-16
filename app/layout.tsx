@@ -1,10 +1,11 @@
 import "./globals.css";
-import CustomCursor from "./components/CustomCursor";
 
 export const metadata = {
-  title: "Rakshaa Navhule | Video Editor & Content Creator",
-  description: "A premium gamified portfolio showcasing video editing and creative storytelling.",
+  title: "Raksha Navhule | Video Editor & Content Creator",
+  description: "A premium aesthetic portfolio showcasing video editing and creative storytelling.",
 };
+
+import CustomCursor from "./components/CustomCursor";
 
 export default function RootLayout({
   children,

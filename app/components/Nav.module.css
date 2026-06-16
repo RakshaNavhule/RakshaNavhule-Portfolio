@@ -1,57 +1,67 @@
 .navbar {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 1.5rem 4rem;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    padding: 0.8rem 1.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 3rem;
     z-index: 100;
-    background: linear-gradient(to bottom, rgba(5, 5, 5, 0.9) 0%, transparent 100%);
+    background-color: rgba(45, 42, 38, 0.95);
+    /* Deep charcoal aesthetic */
     backdrop-filter: blur(10px);
+    border-radius: 100px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .logo {
-    font-size: 1.2rem;
-    font-weight: 700;
-    font-family: var(--font-heading);
-    color: var(--text-primary);
+    font-size: 1.1rem;
+    font-weight: 500;
+    font-family: var(--font-primary);
+    color: #ffffff;
+    letter-spacing: -0.02em;
 }
 
 .navLinks {
     display: flex;
     list-style: none;
-    gap: 3rem;
+    gap: 2rem;
     margin: 0;
     padding: 0;
 }
 
 .navLinks a {
-    color: var(--text-secondary);
-    font-weight: 500;
+    color: #a3a09e;
+    font-weight: 400;
     font-size: 0.95rem;
     transition: color var(--transition-fast);
 }
 
 .navLinks a:hover {
-    color: var(--text-primary);
+    color: #ffffff;
 }
 
 .ctaButton {
-    background-color: var(--accent-color);
-    color: var(--bg-primary);
-    padding: 0.6rem 1.8rem;
+    background-color: transparent;
+    color: #ffffff;
+    padding: 0.5rem 1rem;
     border-radius: 100px;
-    font-weight: 700;
+    font-weight: 500;
     font-family: var(--font-primary);
     font-size: 0.9rem;
-    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    border: 1px solid #5a5550;
+    transition: all var(--transition-fast);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .ctaButton:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px var(--accent-glow);
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: #8c8680;
 }
 
 @media (max-width: 768px) {

@@ -1,9 +1,13 @@
 .brandsSection {
     padding: 6rem 0;
-    background-color: var(--bg-secondary);
+    background-color: var(--bg-primary);
     border-top: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
     overflow: hidden;
+    background-size: 50px 50px;
+    background-image:
+        linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
 }
 
 .container {
@@ -12,13 +16,17 @@
 
 .sectionTitle {
     text-align: center;
-    font-size: 1.5rem;
-    color: var(--text-secondary);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 3rem;
-    font-family: var(--font-primary);
+    font-size: 3.5rem;
+    color: var(--text-primary);
+    margin-bottom: 5rem;
+    font-family: var(--font-heading);
+    font-weight: 600;
+}
+
+.accent {
+    font-style: italic;
     font-weight: 500;
+    opacity: 0.8;
 }
 
 .marqueeContainer {
@@ -30,53 +38,68 @@
 
 .marqueeContent {
     display: flex;
-    gap: 2rem;
+    gap: 4rem;
     flex-shrink: 0;
     animation: scroll 30s linear infinite;
 }
 
 .brandCard {
-    background-color: var(--bg-card);
-    border: 1px solid var(--border-color);
-    padding: 1.5rem 3rem;
-    border-radius: 100px;
-    white-space: nowrap;
+    padding: 2rem 4rem;
     transition: all var(--transition-fast);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-width: max-content;
+    min-width: 280px;
+    gap: 1.5rem;
 }
 
 .brandName {
     font-family: var(--font-heading);
-    font-size: 1.2rem;
-    font-weight: 600;
+    font-size: 1.3rem;
     color: var(--text-primary);
+    font-weight: 600;
     opacity: 0.8;
     transition: opacity var(--transition-fast), color var(--transition-fast);
 }
 
-.brandLogo {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    margin-right: 1rem;
-    object-fit: contain;
-    background-color: white;
-    padding: 2px;
-}
-
-.brandCard:hover {
-    border-color: var(--accent-color);
-    background-color: var(--bg-primary);
-    box-shadow: 0 0 20px rgba(99, 102, 241, 0.2);
-    transform: translateY(-2px);
-}
-
 .brandCard:hover .brandName {
     opacity: 1;
-    color: var(--accent-color);
+    color: var(--text-primary);
+}
+
+.brandLogo {
+    width: 100%;
+    max-width: 220px;
+    height: 120px;
+    object-fit: contain;
+    transition: transform var(--transition-fast);
+}
+
+.brandCard:hover .brandLogo {
+    transform: scale(1.1);
+}
+
+
+.brandCard:hover {
+    transform: translateY(-5px);
+}
+
+@media (max-width: 768px) {
+    .sectionTitle {
+        font-size: 2.2rem;
+        padding: 0 1rem;
+    }
+
+    .brandCard {
+        min-width: 180px;
+        padding: 1.5rem 2rem;
+    }
+
+    .brandLogo {
+        max-width: 130px;
+        height: 60px;
+    }
 }
 
 @keyframes scroll {

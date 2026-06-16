@@ -1,20 +1,39 @@
+"use client";
+
 import styles from "./Nav.module.css";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function Nav() {
     return (
-        <nav className={styles.navbar}>
+        <motion.nav
+            className={styles.navbar}
+            initial={{ y: -100 }}
+            animate={{ y: 0 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        >
             <div className={styles.logo}>
-                Rakshaa Navhule
+                Raksha Navhule
             </div>
             <ul className={styles.navLinks}>
-                <li><Link href="#story" className="play-interactive">Story</Link></li>
-                <li><Link href="#work" className="play-interactive">Vault</Link></li>
-                <li><Link href="#brands" className="play-interactive">Brands</Link></li>
+                {["Home", "Story", "Experience", "Work", "Brands"].map((item, i) => (
+                    <motion.li
+                        key={item}
+                        whileHover={{ y: -2 }}
+                        transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                    >
+                        <Link href={item === "Home" ? "/" : `#${item.toLowerCase()}`}>{item}</Link>
+                    </motion.li>
+                ))}
             </ul>
-            <Link href="#contact" className={`${styles.ctaButton} play-interactive`}>
-                Collaborate
-            </Link>
-        </nav>
+            <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+            >
+                <Link href="#contact" className={styles.ctaButton}>
+                    ↳ Let&apos;s Connect
+                </Link>
+            </motion.div>
+        </motion.nav>
     );
 }
